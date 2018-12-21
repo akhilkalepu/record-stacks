@@ -1,2 +1,2 @@
-# dj-collection-stat-machine
-A web app which analyzes your DJ collection and provides statistics.
+# Record Stacks
+A web app to analylze and get statics on your digital record collection. Currently for Traktor only.
