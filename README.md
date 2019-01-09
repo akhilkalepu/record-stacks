@@ -1,2 +1,2 @@
 # Record Stacks
-A web app to analylze and get statics on your digital record collection. Currently for Traktor only.
+A web app which analyzes your DJ software's database file and provides statistics on your digital record collection. Currently for Traktor only.

@@ -1,8 +1,6 @@
-$(document).ready(function () {
-// ------------------------------------------------
 function upload() {
-    var file = $("#file").get(0).files[0];
+    var x = xmlDoc.getElementsByTagName("collection")[0];
+    var y = x.childNodes[0];
+    var z = y.nodeValue;
+    console.log(z);
 }
-
-// ------------------------------------------------
-});
