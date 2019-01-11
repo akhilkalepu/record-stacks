@@ -12,6 +12,17 @@
     <script src="assets/javascript/script.js"></script>
     
     <title>Record Stacks</title>
+
+    <script>
+        function upload() {
+            var collection = new XMLHttpRequest();
+            collection.open("Get", "collection.nml", false);
+            collection.send();
+            var collectionData = collection.responseText;
+            document.write(collectionData);
+        };
+    </script>
+
 </head>
 
 <body>

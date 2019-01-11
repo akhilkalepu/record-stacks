@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 
 
 class InputForm extends Component {
+
+    upload() {
+        var collection = new XMLHttpRequest();
+        collection.open("Get", "collection.nml", false);
+        collection.send();
+        var collectionData = collection.responseText;
+        document.write(collectionData);
+    }
+    
     render() {
         return (
             <div>
@@ -11,7 +20,7 @@ class InputForm extends Component {
                 <button onclick="upload()">Upload</button>
             </div>
         );
-    }
-}
+    };
+};
 
 export default InputForm;
