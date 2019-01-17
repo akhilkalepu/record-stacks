@@ -18,7 +18,8 @@ class InputForm extends Component {
             const parser = new DOMParser();
             const xml = parser.parseFromString(readerData, 'text/xml');
             console.log(xml);
-            console.log(xml.querySelector('ENTRY').getAttribute('TITLE'));
+            // console.log(xml.querySelector('ENTRY').getAttribute('TITLE'));
+            console.log(xml.getElementsByTagName('ENTRY'));
 
         };
     }
