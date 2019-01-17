@@ -28,11 +28,11 @@ class InputForm extends Component {
                 console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
                 console.log("Album: " + xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"));
                 console.log("Release: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"));
-                console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
                 console.log("Genre: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"));
                 console.log("Key: " + xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE"));
                 console.log("Tempo: " + xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM"));
                 console.log("Time: " + xml.getElementsByTagName('INFO')[i].getAttribute('PLAYTIME_FLOAT'));
+                console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
                 console.log("AUDIO_ID: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID'));
 
                 API.saveTracks({
@@ -40,11 +40,11 @@ class InputForm extends Component {
                     Artist: xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'),
                     Album: xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"),
                     Release: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"),
-                    Added: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"),
                     Genre: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"),
                     Key: xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE"),
                     Tempo: xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM"),
                     Time: xml.getElementsByTagName('INFO')[i].getAttribute('PLAYTIME_FLOAT'),
+                    Added: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"),
                     AUDIO_ID: xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID')
                 })
                     .then(console.log("track saved"))
