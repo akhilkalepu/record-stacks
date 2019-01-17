@@ -24,9 +24,9 @@ class App extends Component {
 
             <Route exact path="/" component={SignUpForm}>
             </Route>
-            <Route path="/sign-in" component={SignInForm}>
+            <Route exact path="/sign-in" component={SignInForm}>
             </Route>
-            <Route path="/input" component={InputForm}>
+            <Route exact path="/input" component={InputForm}>
             </Route>
           </div>
 
