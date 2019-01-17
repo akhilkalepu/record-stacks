@@ -1,37 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from "axios";
 
 class InputForm extends Component {
     
     constructor(props) {
-        super(props)
-        this.uploadFile = this.uploadFile.bind(this);
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
-    uploadFile(event) {
-        let file = event.target.files[0];
-        console.log(file);
-        
-        if (file) {
-            let traktor = new FormData();
-            fetch(traktor)
-                .then(response => response.text())
-                .then(data => {
-                    let parser = new DOMParser();
-                    let xml = parser.parseFromString(data, "application/xml");
-                    document.getElementById("output").textContent = data;
-                    console.log(xml);
-                })
-        }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const file = this.App.files[0];
+        const reader = new FileReader();
+        reader.readAsText(file);
+        reader.onloadend = (evt) => {
+            const readerData = evt.target.result;
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(readerData, 'text/xml');
+            console.log(xml);
+            console.log(xml.querySelector('ENTRY').getAttribute('TITLE'));
+
+        };
     }
     
     render() {
-        return <span>
-            <input type="file"
-            name="myFile"
-            onChange={this.uploadFile} />
-        </span>
+        return (
+            
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    Upload file:
+                    <input
+                        type="file"
+                        ref={input => {
+                        this.App = input;
+                        }}
+                    />
+                    </label>
+                    <br />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        );
     }
 };
 
