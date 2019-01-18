@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import API from "../utils/API";
 import { Link } from 'react-router-dom';
 
 class InputForm extends Component {
@@ -24,30 +23,96 @@ class InputForm extends Component {
             for (var i = 0; i < xml.getElementsByTagName('ENTRY').length; i++) {
 
                 console.log("----------------------------");
-                console.log("Track: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'));
-                console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
-                console.log("Album: " + xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"));
-                console.log("Release: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"));
-                console.log("Genre: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"));
-                console.log("Key: " + xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE"));
-                console.log("Tempo: " + xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM"));
-                console.log("Time: " + xml.getElementsByTagName('INFO')[i].getAttribute('PLAYTIME_FLOAT'));
-                console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
-                console.log("AUDIO_ID: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID'));
 
-                API.saveTracks({
-                    Track: xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'),
-                    Artist: xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'),
-                    Album: xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"),
-                    Release: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"),
-                    Genre: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"),
-                    Key: xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE"),
-                    Tempo: xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM"),
-                    Time: xml.getElementsByTagName('INFO')[i].getAttribute('PLAYTIME_FLOAT'),
-                    Added: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"),
-                    AUDIO_ID: xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID')
-                })  
-                    .catch(err => console.log(err));
+                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE') == null) {
+                    console.log("Track: null");
+                } else {
+                    console.log("Track: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'));
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST') == null) {
+                    console.log("Artist: null");
+                } else {
+                    console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM') == null) {
+                    console.log("Album: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE") == null) {
+                        console.log("Album: null");
+                    } else {
+                        console.log("Album: " + xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"));
+                    }
+                }
+                
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                    console.log("Release: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE") == null) {
+                        console.log("Release: null");
+                    } else {
+                        console.log("Release: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"));
+                    }
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                    console.log("Genre: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE") == null) {
+                        console.log("Genre: null");
+                    } else {
+                        console.log("Genre: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"));
+                    }
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY') == null) {
+                    console.log("Key: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE") == null) {
+                        console.log("Key: null");
+                    } else {
+                        console.log("Key: " + xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY').getAttribute("VALUE"));
+                    }
+                }
+                
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO') == null) {
+                    console.log("Tempo: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM") == null) {
+                        console.log("Tempo: null");
+                    } else {
+                        console.log("Tempo: " + xml.getElementsByTagName('ENTRY')[i].querySelector('TEMPO').getAttribute("BPM"));
+                    }
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                    console.log("Time: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME') == null) {
+                        console.log("Time: null");
+                    } else {
+                        console.log("Time: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME'));
+                    }
+                }
+
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                    console.log("Added: null");
+                } else {
+                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE") == null) {
+                        console.log("Added: null");
+                    } else {
+                        console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
+                    }
+                }
+                
+                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID') == null) {
+                    console.log("AUDIO_ID: null");
+                } else {
+                    console.log("AUDIO_ID: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID'));
+                }
+                
+                console.log("Track Number: " + (i + 1));
             }
         };
     }
