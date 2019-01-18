@@ -80,6 +80,9 @@ class InputForm extends Component {
         return (
             
             <div>
+
+                <h3>Upload the database file for your DJ software. Currently for Traktor only.</h3>
+
                 <form onSubmit={this.handleSubmit}>
                     <label>
                     Upload file:
