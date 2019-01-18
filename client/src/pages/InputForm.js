@@ -46,8 +46,7 @@ class InputForm extends Component {
                     Time: xml.getElementsByTagName('INFO')[i].getAttribute('PLAYTIME_FLOAT'),
                     Added: xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"),
                     AUDIO_ID: xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID')
-                })
-                    .then(console.log("track saved"))
+                })  
                     .catch(err => console.log(err));
             }
         };

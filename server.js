@@ -1,13 +1,16 @@
 const express = require("express");
-const path = require("path");
-const PORT = process.env.PORT || 3001;
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
+const tracks = require ("./routes/api/tracks");
+
 const app = express();
 
-const mongoose = require("mongoose");
-
 // Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.json());
+
+// DB config
+const db = require("./config/keys").mongoURI;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -20,9 +23,13 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/record-stacks");
+app.use("/api/tracks", tracks);
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
-});
+// Connect to the Mongo DB
+mongoose
+  .connect(db)
+  .then(() => console.log("MongoDB connected."))
+  .catch(err => console.log(err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
