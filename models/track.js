@@ -14,4 +14,4 @@ const trackSchema = new Schema({
   AUDIO_ID: { type: String, required: false },
 });
 
-module.exports = Track = mongoose.model("item", trackSchema);
+module.exports = Track = mongoose.model("track", trackSchema);

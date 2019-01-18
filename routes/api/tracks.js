@@ -5,7 +5,7 @@ const Track = require("../../models/Track");
 
 
 // @route   GET api/tracks
-// @desc    Get all items
+// @desc    Get all tracks
 // @access  Public
 router.get("/", (req, res) => {
     Track.find()
