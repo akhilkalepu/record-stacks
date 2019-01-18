@@ -25,4 +25,13 @@ router.post("/", (req, res) => {
         .then(track => res.json(track));
 });
 
+// @route   POST api/tracks
+// @desc    Delete a track object
+// @access  Public
+router.delete("/:id", (req, res) => {
+    Track.findById(req.params.id)
+        .then(track => track.remove().then(() => res.json({success: true})))
+        .catch(err => res.status(404).json({success: true}));
+});
+
 module.exports = router;
