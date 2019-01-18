@@ -8,28 +8,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <Router basename="/react-auth-ui/">
-        <div className="App">
-          <div className="App__Aside"></div>
-          <div className="App__Form">
-            
-            <AppNavbar/>
+	render() {
+			return (
+					<Router basename="/react-auth-ui/">
+							<div className="App">
+									<div>
+											
+											<AppNavbar/>
 
-            <Route exact path="/" component={InputForm}>
-            </Route>
+											<Route exact path="/" component={InputForm}>
+											</Route>
 
-            <br/>
+											<br/>
 
-            <List/>
+											<List/>
 
-          </div>
+									</div>
 
-        </div>
-      </Router>
-    );
-  }
+							</div>
+					</Router>
+			);
+	}
 }
 
 export default App;
