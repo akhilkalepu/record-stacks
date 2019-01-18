@@ -20,7 +20,9 @@ router.post("/", (req, res) => {
     const newTrack = new Track({
         Track: req.body.Track
     })
-    newTrack.save().then(track => res.json(track));
+    newTrack
+        .save()
+        .then(track => res.json(track));
 });
 
 module.exports = router;

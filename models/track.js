@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const trackSchema = new Schema({
-  Track: { type: String, required: false },
+  Track: { type: String, required: true },
   Artist: { type: String, required: false },
   Album: { type: String, required: false },
   Release: { type: Date, required: false },
