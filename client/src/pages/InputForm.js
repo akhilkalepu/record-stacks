@@ -23,47 +23,19 @@ class InputForm extends Component {
             for (var i = 0; i < xml.getElementsByTagName('ENTRY').length; i++) {
 
                 console.log("----------------------------");
-
-                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE') == null) {
-                    console.log("Track: null");
-                } else {
-                    console.log("Track: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'));
-                }
-
-                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST') == null) {
-                    console.log("Artist: null");
-                } else {
-                    console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
-                }
-
-                if (xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM') == null) {
-                    console.log("Album: null");
-                } else {
-                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE") == null) {
-                        console.log("Album: null");
-                    } else {
-                        console.log("Album: " + xml.getElementsByTagName('ENTRY')[i].querySelector('ALBUM').getAttribute("TITLE"));
-                    }
-                }
+                console.log("Track: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'));
+                console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
                 
-                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE") == null) {
                     console.log("Release: null");
                 } else {
-                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE") == null) {
-                        console.log("Release: null");
-                    } else {
-                        console.log("Release: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"));
-                    }
+                    console.log("Release: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE"));
                 }
 
-                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE") == null) {
                     console.log("Genre: null");
                 } else {
-                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE") == null) {
-                        console.log("Genre: null");
-                    } else {
-                        console.log("Genre: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"));
-                    }
+                    console.log("Genre: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("GENRE"));
                 }
 
                 if (xml.getElementsByTagName('ENTRY')[i].querySelector('MUSICAL_KEY') == null) {
@@ -86,32 +58,19 @@ class InputForm extends Component {
                     }
                 }
 
-                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME') == null) {
                     console.log("Time: null");
                 } else {
-                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME') == null) {
-                        console.log("Time: null");
-                    } else {
-                        console.log("Time: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME'));
-                    }
+                    console.log("Time: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute('PLAYTIME'));
                 }
 
-                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO') == null) {
+                if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE") == null) {
                     console.log("Added: null");
                 } else {
-                    if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE") == null) {
-                        console.log("Added: null");
-                    } else {
-                        console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
-                    }
+                    console.log("Added: " + xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("IMPORT_DATE"));
                 }
                 
-                if (xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID') == null) {
-                    console.log("AUDIO_ID: null");
-                } else {
-                    console.log("AUDIO_ID: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID'));
-                }
-                
+                console.log("AUDIO_ID: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID'));
                 console.log("Track Number: " + (i + 1));
             }
         };
