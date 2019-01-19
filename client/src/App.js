@@ -15,7 +15,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
 class App extends Component {
+
+	state = {
+		data: [12, 5, 6, 6, 9, 10],
+		width: 700,
+		height: 200,
+		id: root
+	}
+
 	render() {
+
 		return (
 			<Router basename="/react-auth-ui/">
 				<Provider store={store}>
@@ -26,10 +35,14 @@ class App extends Component {
 							</Route>
 							<br/>
 
-							<GenrePieChart />
-
 							<Container>
-
+								<div className="App">
+									<GenrePieChart
+										data={this.state.data}
+										width={this.state.width}
+										height={this.state.height}
+									/>
+								</div>
 							</Container>
 						</div>
 					</div>
