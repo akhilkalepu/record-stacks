@@ -18,7 +18,15 @@ router.get("/", (req, res) => {
 // @access  Public
 router.post("/", (req, res) => {
     const newTrack = new Track({
-        Track: req.body.Track
+        Track: req.body.Track,
+        Artist: req.body.Artist,
+        Release: req.body.Release,
+        Genre: req.body.Genre,
+        Key: req.body.Key,
+        Tempo: req.body.Tempo,
+        Time: req.body.Time,
+        Added: req.body.Added,
+        AUDIO_ID: req.body.AUDIO_ID
     })
     newTrack
         .save()

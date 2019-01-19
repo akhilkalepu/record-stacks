@@ -27,7 +27,6 @@ class App extends Component {
 							<br/>
 							<Container>
 								<ItemModal />
-								<AppList />
 							</Container>
 						</div>
 					</div>
