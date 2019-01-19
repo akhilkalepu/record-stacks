@@ -23,7 +23,7 @@ class AppList extends Component {
 
                 <ListGroup>
                     <TransitionGroup className="list">
-                        {items.map(({ id, name }) => (
+                        {items.map(({ id, Track }) => (
                             <CSSTransition key= {id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -34,7 +34,7 @@ class AppList extends Component {
                                     >
                                         &times;
                                     </Button>
-                                    {name}
+                                    {Track}
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
