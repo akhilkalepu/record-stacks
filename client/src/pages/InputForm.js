@@ -28,10 +28,10 @@ class InputForm extends Component {
 
                 console.log("----------------------------");
                 console.log("Track: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE'));
-                var artistVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE');
+                var trackVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('TITLE');
 
                 console.log("Artist: " + xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST'));
-                var trackVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST');
+                var artistVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('ARTIST');
                 
                 if (xml.getElementsByTagName('ENTRY')[i].querySelector('INFO').getAttribute("RELEASE_DATE") == null) {
                     console.log("Release: null");
