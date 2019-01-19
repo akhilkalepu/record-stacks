@@ -77,7 +77,7 @@ class InputForm extends Component {
                 
                 var audioidVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID');
 
-                console.log("Track Number: " + (i + 1) + "sent to MongoDB");
+                console.log("Track Number: " + (i + 1) + " sent to MongoDB");
 
                 const newItem = {
                     Track: trackVar,
