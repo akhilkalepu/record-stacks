@@ -5,6 +5,8 @@ import AppNavbar from './components/AppNavbar'
 
 
 import AppList from './components/AppList';
+import ItemModal from './components/ItemModal';
+import { Container } from 'reactstrap';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,7 +25,10 @@ class App extends Component {
 							<Route exact path="/" component={InputForm}>
 							</Route>
 							<br/>
-							<AppList/>
+							<Container>
+								<ItemModal />
+								<AppList />
+							</Container>
 						</div>
 					</div>
 				</Provider>
