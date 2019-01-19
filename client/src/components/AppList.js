@@ -23,14 +23,14 @@ class AppList extends Component {
 
                 <ListGroup>
                     <TransitionGroup className="list">
-                        {items.map(({ id, Track }) => (
-                            <CSSTransition key= {id} timeout={500} classNames="fade">
+                        {items.map(({ _id, Track }) => (
+                            <CSSTransition key= {_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
                                         className="remove-btn"
                                         color="danger"
                                         size="sm"
-                                        onClick={this.onDeleteClick.bind(this, id)}
+                                        onClick={this.onDeleteClick.bind(this, _id)}
                                     >
                                         &times;
                                     </Button>

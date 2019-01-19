@@ -32,8 +32,7 @@ class ItemModal extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const newItem = {
-            id: uuid(),
-            name: this.state.name
+            Track: this.state.name
         }
 
         // Add item
