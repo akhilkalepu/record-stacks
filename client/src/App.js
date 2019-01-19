@@ -26,10 +26,13 @@ class App extends Component {
 							</Route>
 							<br/>
 							<Container>
-								<ItemModal />
+								
 							</Container>
 						</div>
 					</div>
+					
+					
+
 				</Provider>
 			</Router>
 		);
