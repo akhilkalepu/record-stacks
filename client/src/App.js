@@ -4,7 +4,7 @@ import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
 
 
-import List from './components/List';
+import AppList from './components/AppList';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -16,19 +16,17 @@ class App extends Component {
 	render() {
 		return (
 			<Router basename="/react-auth-ui/">
-
 				<Provider store={store}>
-				<div className="App">
-					<div>
-						<AppNavbar/>
-						<Route exact path="/" component={InputForm}>
-						</Route>
-						<br/>
-						<List/>
+					<div className="App">
+						<div>
+							<AppNavbar/>
+							<Route exact path="/" component={InputForm}>
+							</Route>
+							<br/>
+							<AppList/>
+						</div>
 					</div>
-				</div>
 				</Provider>
-
 			</Router>
 		);
 	}

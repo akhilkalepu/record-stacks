@@ -8,7 +8,7 @@ const initialState = {
         { id: uuid(), name: 'steak' },
         { id: uuid(), name: 'water' }
     ]
-}
+};
 
 export default function(state = initialState, action) {
     switch(action.type) {
