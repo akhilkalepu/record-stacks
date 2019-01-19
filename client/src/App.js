@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
-
+import GenrePieChart from './components/GenrePieChart';
 
 import AppList from './components/AppList';
 import ItemModal from './components/ItemModal';
@@ -25,8 +25,11 @@ class App extends Component {
 							<Route exact path="/" component={InputForm}>
 							</Route>
 							<br/>
+
+							<GenrePieChart />
+
 							<Container>
-								
+
 							</Container>
 						</div>
 					</div>
