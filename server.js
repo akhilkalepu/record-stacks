@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const tracks = require ("./routes/api/tracks");
 
@@ -15,14 +16,11 @@ const db = require("./config/keys").mongoURI;
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
 		app.use(express.static("client/build"));
+
+		app.get("*", function (req, res) {
+			res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+		});
 }
-
-// Send every request to the React app
-// Define any API routes before this runs
-
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
 
 app.use("/api/tracks", tracks);
 
