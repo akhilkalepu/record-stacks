@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import {
+  Button,
+} from 'reactstrap';
+
 import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
-import GenrePieChart from './components/GenrePieChart';
-
-import AppList from './components/AppList';
-import ItemModal from './components/ItemModal';
-import { Container } from 'reactstrap';
+import GraphPage from './components/GenrePieChart';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -31,19 +31,28 @@ class App extends Component {
 					<div className="App">
 						<div>
 							<AppNavbar/>
-							<Route exact path="/" component={InputForm}>
-							</Route>
-							<br/>
 
-							<Container>
-								<div className="App">
-									<GenrePieChart
-										data={this.state.data}
-										width={this.state.width}
-										height={this.state.height}
-									/>
-								</div>
-							</Container>
+							<Route exact path="/" component={InputForm} />
+							
+							<Button
+                color="dark"
+                style={{margin: "2rem"}}
+                onChange={this.visualizeData}
+              >Get Data</Button>
+
+              <Button
+                color="secondary"
+                style={{margin: "2rem"}}
+                onChange={this.visualizeData}
+              >Visualize</Button>
+
+              <div className="App">
+                <GraphPage
+                  data={this.state.data}
+                  width={this.state.width}
+                  height={this.state.height}
+                />
+              </div>
 						</div>
 					</div>
 					
