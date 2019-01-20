@@ -29,6 +29,7 @@ class GraphPage extends Component {
             var b = Math.floor(Math.random() * 255);
             return "rgb(" + r + "," + g + "," + b + ")";
           };
+
           const collection = res.data;
 
           let TrackArray = [];
@@ -52,10 +53,16 @@ class GraphPage extends Component {
             AUDIO_IDArray.push(element.AUDIO_ID);
             coloR.push(dynamicColors());
           });
+
+          const genres = [];
+          const genreCount = [];
+          
+
           this.setState({
             Data: {
               labels: TrackArray,
               datasets: [{
+                height: 1000,
                 label: 'Track Time',
                 data: TimeArray,
                 backgroundColor: coloR
@@ -90,7 +97,9 @@ class GraphPage extends Component {
           <div>
             <Pie
               data={this.state.Data}
-              options={{maintainAspectRatio: true}}/>
+              options={{
+                maintainAspectRatio: true
+              }}/>
           </div>
 
         </Container>
