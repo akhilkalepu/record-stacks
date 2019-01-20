@@ -169,8 +169,11 @@ class GenrePieChart extends Component {
           <h2>Keys</h2>
           <HorizontalBar
             data={this.state.KeyBar}
-            height="750"
+            height="400"
             options={{
+              legend: {
+                display: false
+              },
               maintainAspectRatio: false
             }}/>
         </div>
@@ -181,11 +184,16 @@ class GenrePieChart extends Component {
           <h2>Tempos</h2>
           <Bar
             data={this.state.TempoBar}
-            height="500"
+            height="400"
             options={{
+              legend: {
+                display: false
+              },
               maintainAspectRatio: false
             }}/>
         </div>
+
+        
         
         <br/>
 
@@ -193,8 +201,11 @@ class GenrePieChart extends Component {
           <h2>Genres</h2>
           <Pie
             data={this.state.GenrePie}
-            height="3500"
+            height="400"
             options={{
+              legend: {
+                display: false
+              },
               maintainAspectRatio: false
             }}/>
         </div>
