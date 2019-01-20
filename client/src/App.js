@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
-import GraphPage from './pages/GraphPage';
+import GenrePieChart from './pages/GenrePieChart';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -25,7 +25,7 @@ class App extends Component {
 
 							<Route exact path="/" component={InputForm} />
 
-							<GraphPage />
+							<GenrePieChart />
 
 						</div>
 					</div>
