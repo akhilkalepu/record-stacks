@@ -70,7 +70,6 @@ class GenrePieChart extends Component {
           Data: {
             labels: genres,
             datasets: [{
-              height: 1000,
               label: 'Track Time',
               data: genresCount,
               backgroundColor: coloR
@@ -88,8 +87,9 @@ class GenrePieChart extends Component {
         <div>
           <Pie
             data={this.state.Data}
+            height="3500"
             options={{
-              maintainAspectRatio: true
+              maintainAspectRatio: false
             }}/>
         </div>
 

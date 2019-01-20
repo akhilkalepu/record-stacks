@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
-import GenrePieChart from './pages/GenrePieChart';
+import GraphPage from './pages/GraphPage';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -25,7 +25,7 @@ class App extends Component {
 
 							<Route exact path="/" component={InputForm} />
 
-							<GenrePieChart />
+							<GraphPage />
 
 						</div>
 					</div>
