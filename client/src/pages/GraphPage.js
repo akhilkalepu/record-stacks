@@ -1,46 +1,54 @@
 import React, { Component } from 'react';
-import * as d3 from 'd3';
+import {
+  Container,
+  Button
+} from 'reactstrap';
+
+import { connect } from 'react-redux';
+import { getItems } from '../actions/itemActions';
+import PropTypes from 'prop-types';
 
 class GraphPage extends Component {
     
-    componentDidMount() {
-        this.drawChart();
+    getTracks() {
+      this.props.getItems();
+      console.log("getting items")
     }
 
-    drawChart() {
-
-        const data = this.props.data;
-
-        const svg = d3.select("body")
-            .append("svg")
-            .attr("width", this.props.width)
-            .attr("height", this.props.height);
-
-        svg.selectAll("rect")
-            .data(data)
-            .enter()
-            .append("rect")
-            .attr("x", (d, i) => i * 70)
-            .attr("y", (d, i) => this.props.height - 10 * d)
-            .attr("width", 65)
-            .attr("height", (d, i) => d * 10)
-            .attr("fill", "green")
-
-        svg.selectAll("text")
-            .data(data)
-            .enter()
-            .append("text")
-            .text((d) => d)
-            .attr("x", (d, i) => i * 70)
-            .attr("y", (d, i) => this.props.height - (10 * d) - 3)
-
+    visualizeTracks() {
+      this.props.getItems();
+      console.log("visualizing")
     }
 
     render() {
-		return (
-            <div id={"#" + this.props.id}></div>
-        );
+		  return (
+        
+        <Container>
+          
+          <Button
+            color="dark"
+            style={{margin: "2rem"}}
+            onClick={this.getTracks}
+          >Get Data</Button>
+
+          <Button
+            color="secondary"
+            style={{margin: "2rem"}}
+            onClick={this.visualizeData}
+          >Visualize</Button>
+
+        </Container>
+      );
     }
 }
 
-export default GraphPage
+GraphPage.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, { getItems })(GraphPage);

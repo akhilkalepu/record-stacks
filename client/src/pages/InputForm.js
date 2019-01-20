@@ -98,24 +98,22 @@ class InputForm extends Component {
     }
     
     render() {
-        return (
-            
-            <div>
+      return (
+        <div>
+          <h3>Upload the database file for your DJ software. Currently for Traktor only.</h3>
 
-                <h3>Upload the database file for your DJ software. Currently for Traktor only.</h3>
-
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="file"
-                        ref={input => {
-                        this.App = input;
-                        }}
-                    />
-                    <br/>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        );
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="file"
+              ref={input => {
+              this.App = input;
+              }}
+            />
+            <br/>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      );
     }
 };
 
