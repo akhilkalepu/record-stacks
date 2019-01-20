@@ -22,7 +22,15 @@ class GraphPage extends Component {
       console.log("getting items")
       axios.get(`/api/tracks`)
         .then(res => {
+          var coloR = [];
+          var dynamicColors = function () {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + ")";
+          };
           const collection = res.data;
+
           let TrackArray = [];
           let ArtistArray = [];
           let ReleaseArray = [];
@@ -42,6 +50,7 @@ class GraphPage extends Component {
             TimeArray.push(element.Time);
             AddedArray.push(element.Added);
             AUDIO_IDArray.push(element.AUDIO_ID);
+            coloR.push(dynamicColors());
           });
           this.setState({
             Data: {
@@ -49,20 +58,7 @@ class GraphPage extends Component {
               datasets: [{
                 label: 'Track Time',
                 data: TimeArray,
-                backgroundColor: [
-                  'rgba(255,105,145,0.6)',
-                  'rgba(155,100,210,0.6)',
-                  'rgba(90,178,255,0.6)',
-                  'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)',
-                  'rgba(255,105,145,0.6)',
-                  'rgba(155,100,210,0.6)',
-                  'rgba(90,178,255,0.6)',
-                  'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
-                ]
+                backgroundColor: coloR
               }]
             }
           });
