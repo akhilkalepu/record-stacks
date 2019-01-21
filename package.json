@@ -17,6 +17,8 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
+    "@okta/okta-react": "^1.1.4",
+    "@okta/okta-signin-widget": "^2.15.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",

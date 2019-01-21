@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteItem, addItem } from '../actions/itemActions';
+import { addItem } from '../actions/itemActions';
 
 class InputForm extends Component {
     
@@ -99,18 +99,19 @@ class InputForm extends Component {
     
     render() {
       return (
-        <div>
-          <h3>Upload the database file for your DJ software. Currently for Traktor only.</h3>
+        <div id="inputForm">
+          <h3 id="inputElement">Upload the database file from your DJ software. Currently for Traktor only.</h3>
 
           <form onSubmit={this.handleSubmit}>
             <input
-              type="file"
-              ref={input => {
-              this.App = input;
-              }}
+                id="inputElement"
+                type="file"
+                ref={input => {
+                this.App = input;
+                }}
             />
             <br/>
-            <button type="submit">Submit</button>
+            <button id="inputButton inputElement" type="submit">Submit</button>
           </form>
         </div>
       );
@@ -121,4 +122,4 @@ const mapStateToProps = state => ({
     item: state.item
 });
 
-export default connect(mapStateToProps, { deleteItem, addItem })(InputForm);
+export default connect(mapStateToProps, { addItem })(InputForm);

@@ -54,6 +54,7 @@ class GenrePieChart extends Component {
 
         //------------------------------------
 
+        // Round tempo to the nearest 10 for tempos10
         let Tempo10Array = [];
         for (var i = 0; i < TempoArray.length; i++) {
           Tempo10Array[i] = Math.round(TempoArray[i] / 10) * 10;

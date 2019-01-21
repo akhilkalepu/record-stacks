@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { HashRouter as Router, Route } from 'react-router-dom';
+import Login from "./components/auth/Login"
 import InputForm from './pages/InputForm';
 import AppNavbar from './components/AppNavbar'
 import GraphPage from './pages/GraphPage';
@@ -23,9 +24,13 @@ class App extends Component {
 
 							<AppNavbar />
 
-							<Route exact path="/" component={InputForm} />
+              <div className="container">
 
-							<GraphPage />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/" component={InputForm} />
+                <Route exact path="/" component={GraphPage} />
+
+              </div>
 
 						</div>
 					</div>
