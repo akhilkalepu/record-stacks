@@ -3,7 +3,7 @@ import React from "react";
 export default () => {
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Sign In Widget</h1>
     </div>
   )
 }

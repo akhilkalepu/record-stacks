@@ -100,7 +100,8 @@ class InputForm extends Component {
     render() {
       return (
         <div id="inputForm">
-          <h3 id="inputElement">Upload the database file from your DJ software. Currently for Traktor only.</h3>
+          <h3>Upload the database file from your DJ software</h3>
+          <p id="inputElement">Currently for Traktor only.</p>
 
           <form onSubmit={this.handleSubmit}>
             <input
