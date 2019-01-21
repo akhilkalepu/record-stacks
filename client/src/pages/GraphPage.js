@@ -149,7 +149,6 @@ class GenrePieChart extends Component {
             r: keyTempoCount[i]
           });
         }
-        console.log(keytempoData);
 
         //------------------------------------
 
@@ -216,7 +215,7 @@ class GenrePieChart extends Component {
             datasets: [{
               label: 'Key/Tempo Bubble Chart',
               data: keytempoData,
-              backgroundColor: tempos10Colors
+              backgroundColor: keytempoColors
             }]
           },
 
@@ -271,10 +270,22 @@ class GenrePieChart extends Component {
           <h2>Key/Tempo</h2>
           <Bubble
             data={this.state.KeyTempoBubble}
-            height="400"
+            height="800"
             options={{
               legend: {
                 display: false
+              },
+              scales: {
+                yAxes: [{
+                  type: 'logarithmic',
+                  ticks: {
+                    min: 0,
+                    max: 210,
+                    callback: function (value, index, values) { //needed to change the scientific notation results from using logarithmic scale
+                      return Number(value.toString()); //pass tick values as a string into Number function
+                    }
+                  }
+                }]
               },
               maintainAspectRatio: false
             }}/>
