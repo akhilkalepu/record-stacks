@@ -5,7 +5,8 @@ import {
 import {
   Pie,
   Bar,
-  HorizontalBar
+  HorizontalBar,
+  Bubble
 } from 'react-chartjs-2';
 import axios from 'axios';
 // import { connect } from 'react-redux';
@@ -75,8 +76,7 @@ class GenrePieChart extends Component {
           obj.Tempo = Tempo10Array[i];
           KeyTempoArray.push(obj);
         });
-        
-        console.log(KeyTempoArray);
+
         const keystempos = KeyTempoArray.filter((e, i) => {
           return KeyTempoArray.findIndex((x) => {
           return x.Key === e.Key && x.Tempo === e.Tempo;
@@ -85,7 +85,6 @@ class GenrePieChart extends Component {
         keystempos.sort(function (a, b) {
           return a.Key - b.Key;
         });
-        console.log(keystempos);
 
         //------------------------------------
 
@@ -132,7 +131,7 @@ class GenrePieChart extends Component {
 
         //------------------------------------
 
-        let keysTemposCount = [];
+        let keyTempoCount = [];
         for (i = 0; i < keystempos.length; i++) {
           count = 0;
           for (j = 0; j < KeyTempoArray.length; j++) {
@@ -140,9 +139,17 @@ class GenrePieChart extends Component {
               count++;
             }
           }
-          keysTemposCount.push(count);
+          keyTempoCount.push(count);
         }
-        console.log(keysTemposCount);
+        let keytempoData = [];
+        for (i = 0; i < keyTempoCount.length; i++) {
+          keytempoData.push({
+            x: keystempos[i].Key,
+            y: keystempos[i].Tempo,
+            r: keyTempoCount[i]
+          });
+        }
+        console.log(keytempoData);
 
         //------------------------------------
 
@@ -161,6 +168,7 @@ class GenrePieChart extends Component {
         //====================================
         var keysColors = [];
         var tempos10Colors = [];
+        var keytempoColors = [];
         var genresColors = [];
 
         var dynamicColors = function () {
@@ -175,6 +183,9 @@ class GenrePieChart extends Component {
         }
         for (i = 0; i < tempos10.length; i++) {
           tempos10Colors.push(dynamicColors());
+        }
+        for (i = 0; i < keystempos.length; i++) {
+          keytempoColors.push(dynamicColors());
         }
         for (i = 0; i < genres.length; i++) {
           genresColors.push(dynamicColors());
@@ -196,6 +207,15 @@ class GenrePieChart extends Component {
             datasets: [{
               label: 'Tempo Bar Chart',
               data: tempos10Count,
+              backgroundColor: tempos10Colors
+            }]
+          },
+
+          KeyTempoBubble: {
+            labels: keys,
+            datasets: [{
+              label: 'Key/Tempo Bubble Chart',
+              data: keytempoData,
               backgroundColor: tempos10Colors
             }]
           },
@@ -245,7 +265,20 @@ class GenrePieChart extends Component {
             }}/>
         </div>
 
-        
+        <br/>
+
+        <div>
+          <h2>Key/Tempo</h2>
+          <Bubble
+            data={this.state.KeyTempoBubble}
+            height="400"
+            options={{
+              legend: {
+                display: false
+              },
+              maintainAspectRatio: false
+            }}/>
+        </div>
         
         <br/>
 
