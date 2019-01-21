@@ -30,7 +30,6 @@ class GenrePieChart extends Component {
         const collection = res.data;
 
         let KeyArray = [];
-        let Tempo10Array = [];
         let TempoArray = [];
         let GenreArray = [];
 
@@ -43,25 +42,57 @@ class GenrePieChart extends Component {
         });
 
         // Gather unique data
+        //====================================
         var unique = function(value, index, self) {
           return self.indexOf(value) === index;
         }
 
-        const keys = KeyArray.filter(unique).sort(function(a, b){return a - b});
+        //------------------------------------
         
+        const keys = KeyArray.filter(unique).sort(function(a, b){return a - b});
+
+        //------------------------------------
+
+        let Tempo10Array = [];
         for (var i = 0; i < TempoArray.length; i++) {
           Tempo10Array[i] = Math.round(TempoArray[i] / 10) * 10;
         }
-        var tempos10 = Tempo10Array.filter(unique).sort(function (a, b) {return a - b});
+        const tempos10 = Tempo10Array.filter(unique).sort(function (a, b) {return a - b});
+
+        //------------------------------------
 
         for (i = 0; i < TempoArray.length; i++) {
           TempoArray[i] = Math.round(TempoArray[i]);
         }
-        var tempos = TempoArray.filter(unique).sort(function(a, b){return a - b});
+        const tempos = TempoArray.filter(unique).sort(function (a, b) {return a - b});
+
+        //------------------------------------
+        
+        let KeyTempoArray = [];
+        KeyArray.forEach(function (v, i) {
+          var obj = {};
+          obj.Key = v;
+          obj.Tempo = Tempo10Array[i];
+          KeyTempoArray.push(obj);
+        });
+        
+        console.log(KeyTempoArray);
+        const keystempos = KeyTempoArray.filter((e, i) => {
+          return KeyTempoArray.findIndex((x) => {
+          return x.Key === e.Key && x.Tempo === e.Tempo;
+          }) === i;
+        });
+        keystempos.sort(function (a, b) {
+          return a.Key - b.Key;
+        });
+        console.log(keystempos);
+
+        //------------------------------------
 
         const genres = GenreArray.filter(unique).sort();
 
         // Get data counts
+        //====================================
         let keysCount = [];
         for (i = 0; i < keys.length; i++) {
           var count = 0;
@@ -72,6 +103,8 @@ class GenrePieChart extends Component {
           }
           keysCount.push(count);
         }
+
+        //------------------------------------
 
         let tempos10Count = [];
         for (i = 0; i < tempos10.length; i++) {
@@ -84,6 +117,8 @@ class GenrePieChart extends Component {
           tempos10Count.push(count);
         }
 
+        //------------------------------------
+
         let temposCount = [];
         for (i = 0; i < tempos.length; i++) {
           count = 0;
@@ -94,6 +129,22 @@ class GenrePieChart extends Component {
           }
           temposCount.push(count);
         }
+
+        //------------------------------------
+
+        let keysTemposCount = [];
+        for (i = 0; i < keystempos.length; i++) {
+          count = 0;
+          for (j = 0; j < KeyTempoArray.length; j++) {
+            if (keystempos[i].Key === KeyTempoArray[j].Key && keystempos[i].Tempo === KeyTempoArray[j].Tempo) {
+              count++;
+            }
+          }
+          keysTemposCount.push(count);
+        }
+        console.log(keysTemposCount);
+
+        //------------------------------------
 
         let genresCount = [];
         for (i = 0; i < genres.length; i++) {
@@ -107,6 +158,7 @@ class GenrePieChart extends Component {
         }
         
         // Get random colors for chart
+        //====================================
         var keysColors = [];
         var tempos10Colors = [];
         var genresColors = [];
@@ -121,7 +173,7 @@ class GenrePieChart extends Component {
         for (i = 0; i < keys.length; i++) {
           keysColors.push(dynamicColors());
         }
-        for (i = 0; i < tempos.length; i++) {
+        for (i = 0; i < tempos10.length; i++) {
           tempos10Colors.push(dynamicColors());
         }
         for (i = 0; i < genres.length; i++) {
@@ -166,7 +218,7 @@ class GenrePieChart extends Component {
       <Container>
 
         <div>
-          <h2>Keys</h2>
+          <h2>Key</h2>
           <HorizontalBar
             data={this.state.KeyBar}
             height="400"
@@ -181,7 +233,7 @@ class GenrePieChart extends Component {
         <br/>
 
         <div>
-          <h2>Tempos</h2>
+          <h2>Tempo</h2>
           <Bar
             data={this.state.TempoBar}
             height="400"
@@ -198,7 +250,7 @@ class GenrePieChart extends Component {
         <br/>
 
         <div>
-          <h2>Genres</h2>
+          <h2>Genre</h2>
           <Pie
             data={this.state.GenrePie}
             height="400"
