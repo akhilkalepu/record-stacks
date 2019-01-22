@@ -26,7 +26,39 @@ class AppNavbar extends Component {
     this.state = {
       dropdownOpen: false
     };
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   }
+
+    componentDidMount() {
+        this.getUser()
+    }
+
+    updateUser(userObject) {
+        this.setState(userObject)
+    }
+
+    getUser() {
+        axios.get('/user/').then(response => {
+            console.log('Get user response: ')
+            console.log(response.data)
+            if (response.data.user) {
+                console.log('Get User: There is a user saved in the server session: ')
+
+                this.setState({
+                    loggedIn: true,
+                    username: response.data.user.username
+                })
+            } else {
+                console.log('Get user: no user');
+                this.setState({
+                    loggedIn: false,
+                    username: null
+                })
+            }
+        })
+    }
 
   logout(event) {
     event.preventDefault()
@@ -60,9 +92,18 @@ class AppNavbar extends Component {
         <Navbar color="dark" dark expand="sm" fixed={`top`} className="mb-5">
           <Container>
             <NavbarBrand href="/">record stacks</NavbarBrand>
+            {/* greet user if logged in: */}
+            {this.state.loggedIn &&
+              <NavbarBrand href="/">{this.state.username}</NavbarBrand>
+            }
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="/">
+                    home
+                  </NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink href="/inputform">
                     input
