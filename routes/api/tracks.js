@@ -3,8 +3,8 @@ const router = express.Router();
 
 const Track = require("../../models/Track");
 
-const User = require('../../database/models/user');
-const passport = require('../../passport');
+// const User = require('../../database/models/user');
+// const passport = require('../../passport');
 
 
 // @route   GET api/tracks
