@@ -5,6 +5,8 @@ import AppNavbar from './components/AppNavbar';
 import Home from "./pages/Home";
 import InputForm from './pages/InputForm';
 import GraphPage from './pages/GraphPage';
+
+import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 import { Provider } from 'react-redux';
@@ -30,6 +32,8 @@ class App extends Component {
 
                 <Route path="/inputform" exact={true} component={InputForm} />
                 <Route path="/graphpage" exact={true} component={GraphPage} />
+
+                <Route path="/login" exact={true} component={Login} />
                 <Route path="/signup" exact={true} component={Signup} />
 
               </div>

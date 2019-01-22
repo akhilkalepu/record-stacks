@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import {
 	Button,
-	Modal,
-	ModalHeader,
-	ModalBody,
 	Form,
-	FormGroup,
 	Label,
 	Input
 } from 'reactstrap';
@@ -29,9 +25,9 @@ class Signup extends Component {
 		})
 	}
 	handleSubmit(event) {
+		event.preventDefault()
 		console.log('sign-up handleSubmit, username: ')
 		console.log(this.state.username)
-		event.preventDefault()
 
 		//request to server to add a new username/password
 		axios.post('/user/', {
