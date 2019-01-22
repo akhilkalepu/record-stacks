@@ -25,3 +25,7 @@ body {
   #inputElement {
     margin-bottom: 20px;
   }
+
+#dropdownMenu {
+  margin-left: 15px;
+}

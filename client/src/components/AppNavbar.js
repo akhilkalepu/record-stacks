@@ -22,6 +22,10 @@ class AppNavbar extends Component {
   constructor() {
     super()
     this.logout = this.logout.bind(this)
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
   }
 
   logout(event) {
@@ -39,15 +43,12 @@ class AppNavbar extends Component {
       console.log('Logout error')
     })
   }
-
-  state = {
-    isOpen: false
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
   }
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  
   render() {
 
     const loggedIn = this.props.loggedIn;
@@ -77,19 +78,19 @@ class AppNavbar extends Component {
                     github
                   </NavLink>
                 </NavItem>
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} id="dropdownMenu">
                   <DropdownToggle caret>
-                    login / sign out
+                    account
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem href="/login">
-                      sign up
-                    </DropdownItem>
-                    <DropdownItem href="/signup">
                       login
                     </DropdownItem>
+                    <DropdownItem href="/signup">
+                      sign up
+                    </DropdownItem>
                     <DropdownItem href="/#" onClick={this.logout}>
-                      sign out
+                      log out
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
