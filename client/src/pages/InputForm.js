@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
 
 class InputForm extends Component {
-    
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -12,7 +12,7 @@ class InputForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
+
         const file = this.App.files[0];
         const reader = new FileReader();
         reader.readAsText(file);
@@ -77,8 +77,6 @@ class InputForm extends Component {
                 
                 var audioidVar = xml.getElementsByTagName('ENTRY')[i].getAttribute('AUDIO_ID');
 
-                console.log("Track Number: " + (i + 1) + " sent to MongoDB");
-
                 const newItem = {
                     Track: trackVar,
                     Artist: artistVar,
@@ -93,29 +91,31 @@ class InputForm extends Component {
 
                 // Add item
                 this.props.addItem(newItem);
+                console.log("Track Number: " + (i + 1) + " sent to MongoDB");
             }
         };
     }
     
     render() {
-      return (
-        <div id="inputForm">
-          <h3>Upload the database file from your DJ software</h3>
-          <p id="inputElement">Currently for Traktor only.</p>
 
-          <form onSubmit={this.handleSubmit}>
-            <input
-                id="inputElement"
-                type="file"
-                ref={input => {
-                this.App = input;
-                }}
-            />
-            <br/>
-            <button id="inputButton inputElement" type="submit">Submit</button>
-          </form>
-        </div>
-      );
+				return (
+					<div id="inputForm">
+
+						<h3>Upload the database file from your DJ software</h3>
+						<h3 id="inputElement">Currently for Traktor only</h3>
+
+						<form onSubmit={this.handleSubmit}>
+							<input
+									id="inputElement"
+									type="file"
+									ref={input => {
+									this.App = input;
+									}}
+							/>
+							<button id="inputButton inputElement" type="submit">Submit</button>
+						</form>
+					</div>
+				);
     }
 };
 

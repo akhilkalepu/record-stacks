@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
+import { GET_ITEMS, DROP_COLLECTION, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
 export const getItems = () => dispatch => {
   dispatch(setItemsLoading());
@@ -11,6 +11,15 @@ export const getItems = () => dispatch => {
           payload: res.data
       })
     );
+};
+
+export const dropCollection = () => dispatch => {
+  axios.drop().then(res =>
+    dispatch({
+      type: DROP_COLLECTION
+      // payload: id
+    })
+  );
 };
 
 export const deleteItem = (id) => dispatch => {

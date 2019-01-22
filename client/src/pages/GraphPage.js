@@ -9,9 +9,6 @@ import {
   Bubble
 } from 'react-chartjs-2';
 import axios from 'axios';
-// import { connect } from 'react-redux';
-// import { getItems } from '../actions/itemActions';
-// import PropTypes from 'prop-types';
 
 class GenrePieChart extends Component {
     
