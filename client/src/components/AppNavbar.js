@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from "react-router-dom";
+import axios from 'axios'
+
 import {
     Collapse,
     Navbar,
@@ -8,10 +10,36 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Container
+    Container,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
 } from "reactstrap";
 
 class AppNavbar extends Component {
+
+  constructor() {
+    super()
+    this.logout = this.logout.bind(this)
+  }
+
+  logout(event) {
+    event.preventDefault()
+    console.log('logging out')
+    axios.post('/user/logout').then(response => {
+      console.log(response.data)
+      if (response.status === 200) {
+        this.props.updateUser({
+          loggedIn: false,
+          username: null
+        })
+      }
+    }).catch(error => {
+      console.log('Logout error')
+    })
+  }
+
   state = {
     isOpen: false
   }
@@ -21,6 +49,11 @@ class AppNavbar extends Component {
     });
   }
   render() {
+
+    const loggedIn = this.props.loggedIn;
+    console.log('navbar render, props: ')
+    console.log(this.props);
+
     return (
       <div>
         <Navbar color="dark" dark expand="sm" fixed={`top`} className="mb-5">
@@ -44,6 +77,22 @@ class AppNavbar extends Component {
                     github
                   </NavLink>
                 </NavItem>
+                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                  <DropdownToggle caret>
+                    login / sign out
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem href="/login">
+                      sign up
+                    </DropdownItem>
+                    <DropdownItem href="/signup">
+                      login
+                    </DropdownItem>
+                    <DropdownItem href="/#" onClick={this.logout}>
+                      sign out
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </Nav>
           </Collapse>
           </Container>
