@@ -28,8 +28,8 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault()
-        console.log('handleSubmit')
+        event.preventDefault();
+        console.log('handleSubmit');
 
         axios
             .post('/user/login', {

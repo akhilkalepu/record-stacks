@@ -33,8 +33,18 @@ class App extends Component {
                 <Route path="/inputform" exact={true} component={InputForm} />
                 <Route path="/graphpage" exact={true} component={GraphPage} />
 
-                <Route path="/login" exact={true} component={Login} />
-                <Route path="/signup" exact={true} component={Signup} />
+                <Route
+                  path="/login"
+                  render={() =>
+                    <Login
+                      updateUser={this.updateUser}
+                    />}
+                />
+                <Route
+                  path="/signup"
+                  render={() =>
+                    <Signup/>}
+        />
 
               </div>
             
