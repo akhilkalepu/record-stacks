@@ -83,7 +83,7 @@ class AppNavbar extends Component {
   
   render() {
 
-    const loggedIn = this.props.loggedIn;
+    // 
     console.log('navbar render, props: ')
     console.log(this.props);
 
@@ -92,6 +92,11 @@ class AppNavbar extends Component {
         <Navbar color="dark" dark expand="sm" fixed={`top`} className="mb-5">
           <Container>
             <NavbarBrand href="/">record stacks</NavbarBrand>
+            
+            {/* greet user if logged in: */}
+            {this.state.loggedIn &&
+              <NavbarBrand href="/">|</NavbarBrand>
+            }
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
               <NavbarBrand href="/">{this.state.username}</NavbarBrand>
@@ -99,11 +104,6 @@ class AppNavbar extends Component {
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink href="/">
-                    home
-                  </NavLink>
-                </NavItem>
                 <NavItem>
                   <NavLink href="/inputform">
                     input

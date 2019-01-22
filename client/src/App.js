@@ -24,8 +24,6 @@ class App extends Component {
       loggedIn: false,
       username: null
     }
-
-    // this.componentDidMount = this.componentDidMount.bind(this)
   }
 
 	render() {
