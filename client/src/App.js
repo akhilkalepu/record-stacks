@@ -69,7 +69,7 @@ class App extends Component {
               <AppNavbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
               {/* greet user if logged in: */}
               {this.state.loggedIn &&
-                <p>Join the party, {this.state.username}!</p>
+                <p id="inputForm">Welcome to Record Stacks, {this.state.username}!</p>
               }
 
               <div className="container">
