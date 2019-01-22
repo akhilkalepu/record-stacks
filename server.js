@@ -10,8 +10,8 @@ const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 
-// const tracks = require("./routes/api/tracks");
-const user = require('./routes/user')
+const tracks = require("./routes/api/tracks");
+const user = require('./routes/user');
 const app = express();
 
 // Define middleware here
@@ -38,7 +38,7 @@ app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
 
 // Routes
-// app.use("/api/tracks", tracks);
+app.use("/api/tracks", tracks);
 app.use("/user", user);
 
 // DB config
