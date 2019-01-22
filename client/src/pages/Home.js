@@ -7,7 +7,7 @@ export class Home extends Component {
 
     return (
       <div className="jumbotron">
-        <h1 className="display-4">Record Stacks Login</h1>
+        <h1 className="display-4">Home</h1>
       </div>
     );
   }

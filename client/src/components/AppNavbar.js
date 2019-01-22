@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from "react-router-dom";
-import axios from 'axios'
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 import {
     Collapse,
@@ -24,7 +24,8 @@ class AppNavbar extends Component {
     this.logout = this.logout.bind(this)
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      redirectTo: null
     };
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -57,6 +58,7 @@ class AppNavbar extends Component {
                     username: null
                 })
             }
+            var userExport = this.state.username;
         })
     }
 
@@ -70,9 +72,15 @@ class AppNavbar extends Component {
           loggedIn: false,
           username: null
         })
+        // this.setState({
+        //   redirectTo: '/signup'
+        // })
       }
     }).catch(error => {
       console.log('Logout error')
+    })
+    this.setState({
+      redirectTo: '/login'
     })
   }
   toggle() {
@@ -86,6 +94,10 @@ class AppNavbar extends Component {
     // 
     console.log('navbar render, props: ')
     console.log(this.props);
+
+    if (this.state.redirectTo) {
+        return <Redirect to={{ pathname: this.state.redirectTo }} />
+    }
 
     return (
       <div>

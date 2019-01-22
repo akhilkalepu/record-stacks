@@ -43,6 +43,7 @@ router.post(
             username: req.user.username
         };
         res.send(userInfo);
+        res.redirect('/');
     }
 )
 

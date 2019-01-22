@@ -26,7 +26,7 @@ app.use(
 // Sessions
 app.use(
 	session({
-		secret: 'dj-collection-stat-machine', //pick a random string to make the hash that is generated secure
+		secret: 'cherry-rubarb-apple-pumpkin-pecan-keylime', //pick a random string to make the hash that is generated secure
 		store: new MongoStore({ mongooseConnection: dbConnection }),
 		resave: false, //required
 		saveUninitialized: false //required
