@@ -41,25 +41,26 @@ class AppNavbar extends Component {
     }
 
     getUser() {
-        axios.get('/user/').then(response => {
-            console.log('Get user response: ')
-            console.log(response.data)
-            if (response.data.user) {
-                console.log('Get User: There is a user saved in the server session: ')
+      axios.get('/user/').then(response => {
+        console.log('Get user response: ')
+        console.log(response.data)
+        if (response.data.user) {
+          console.log('Get User: There is a user saved in the server session: ')
 
-                this.setState({
-                    loggedIn: true,
-                    username: response.data.user.username
-                })
-            } else {
-                console.log('Get user: no user');
-                this.setState({
-                    loggedIn: false,
-                    username: null
-                })
-            }
-            var userExport = this.state.username;
-        })
+          this.setState({
+              loggedIn: true,
+              loggedOut: false,
+              username: response.data.user.username
+          })
+        } else {
+          console.log('Get user: no user');
+          this.setState({
+              loggedIn: false,
+              loggedOut: true,
+              username: null
+          })
+        }
+      })
     }
 
   logout(event) {
@@ -136,15 +137,21 @@ class AppNavbar extends Component {
                     account
                   </DropdownToggle>
                   <DropdownMenu>
+                    {this.state.loggedOut &&
                     <DropdownItem href="/login">
                       login
                     </DropdownItem>
+                    }
+                    {this.state.loggedOut &&
                     <DropdownItem href="/signup">
                       sign up
                     </DropdownItem>
-                    <DropdownItem href="/#" onClick={this.logout}>
-                      log out
-                    </DropdownItem>
+                    }
+                    {this.state.loggedIn &&
+                      <DropdownItem href="/#" onClick={this.logout}>
+                        log out
+                      </DropdownItem>
+                    }
                   </DropdownMenu>
                 </Dropdown>
               </Nav>

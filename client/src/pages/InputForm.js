@@ -97,7 +97,7 @@ class InputForm extends Component {
     }
     
     render() {
-
+        
 				return (
 					<div id="inputForm">
 
