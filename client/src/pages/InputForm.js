@@ -2,12 +2,36 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
+import axios from 'axios';
 
 class InputForm extends Component {
 
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    getUser() {
+      axios.get('/user/').then(response => {
+        console.log('Get user response: ')
+        console.log(response.data)
+        if (response.data.user) {
+          console.log('Get User: There is a user saved in the server session: ')
+
+          this.setState({
+              loggedIn: true,
+              loggedOut: false,
+              username: response.data.user.username
+          })
+        } else {
+          console.log('Get user: no user');
+          this.setState({
+              loggedIn: false,
+              loggedOut: true,
+              username: null
+          })
+        }
+      })
     }
 
     handleSubmit(event) {
@@ -97,7 +121,7 @@ class InputForm extends Component {
     }
     
     render() {
-        
+      
 				return (
 					<div id="inputForm">
 
