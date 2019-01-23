@@ -10,7 +10,7 @@ import {
 } from 'react-chartjs-2';
 import axios from 'axios';
 
-class GenrePieChart extends Component {
+class GraphPage extends Component {
     
   constructor(props) {
     super(props);
@@ -309,4 +309,4 @@ class GenrePieChart extends Component {
   }
 }
 
-export default GenrePieChart;
+export default GraphPage;
