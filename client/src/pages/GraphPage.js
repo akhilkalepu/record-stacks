@@ -63,76 +63,76 @@ class GraphPage extends Component {
         let camelotArray = KeyArray;
         for (l = 0; l < camelotArray.length; l++) {
           if (camelotArray[l] === 0) {
-            camelotArray[l] = "8B / C";
+            camelotArray[l] = "8B / C Major";
           }
           if (camelotArray[l] === 1) {
-            camelotArray[l] = "3B / Db";
+            camelotArray[l] = "3B / Db Major";
           }
           if (camelotArray[l] === 2) {
-            camelotArray[l] = "10B / D";
+            camelotArray[l] = "10B / D Major";
           }
           if (camelotArray[l] === 3) {
-            camelotArray[l] = "5B / Eb";
+            camelotArray[l] = "5B / Eb Major";
           }
           if (camelotArray[l] === 4) {
-            camelotArray[l] = "12B / E";
+            camelotArray[l] = "12B / E Major";
           }
           if (camelotArray[l] === 5) {
-            camelotArray[l] = "7B / F";
+            camelotArray[l] = "7B / F Major";
           }
           if (camelotArray[l] === 6) {
-            camelotArray[l] = "2B / Gb";
+            camelotArray[l] = "2B / Gb Major";
           }
           if (camelotArray[l] === 7) {
-            camelotArray[l] = "9B / G";
+            camelotArray[l] = "9B / G Major";
           }
           if (camelotArray[l] === 8) {
-            camelotArray[l] = "4B / Ab";
+            camelotArray[l] = "4B / Ab Major";
           }
           if (camelotArray[l] === 9) {
-            camelotArray[l] = "11B / A";
+            camelotArray[l] = "11B / A Major";
           }
           if (camelotArray[l] === 10) {
-            camelotArray[l] = "6B / Bb";
+            camelotArray[l] = "6B / Bb Major";
           }
           if (camelotArray[l] === 11) {
-            camelotArray[l] = "1B / B";
+            camelotArray[l] = "1B / B Major";
           }
           if (camelotArray[l] === 12) {
-            camelotArray[l] = "5A / Cm";
+            camelotArray[l] = "5A / C Minor";
           }
           if (camelotArray[l] === 13) {
-            camelotArray[l] = "12A / Dbm";
+            camelotArray[l] = "12A / Db Minor";
           }
           if (camelotArray[l] === 14) {
-            camelotArray[l] = "7A / Dm";
+            camelotArray[l] = "7A / D Minor";
           }
           if (camelotArray[l] === 15) {
-            camelotArray[l] = "2A / Ebm";
+            camelotArray[l] = "2A / Eb Minor";
           }
           if (camelotArray[l] === 16) {
-            camelotArray[l] = "9A / Em";
+            camelotArray[l] = "9A / E Minor";
           }
           if (camelotArray[l] === 17) {
-            camelotArray[l] = "4A / Fm";
+            camelotArray[l] = "4A / F Minor";
           }
           if (camelotArray[l] === 18) {
-            camelotArray[l] = "11A / Gbm";
+            camelotArray[l] = "11A / Gb Minor";
           }
           if (camelotArray[l] === 19) {
-            camelotArray[l] = "6A / Gm";
+            camelotArray[l] = "6A / G Minor";
           }
           if (camelotArray[l] === 20) {
-            camelotArray[l] = "1A / Abm";
+            camelotArray[l] = "1A / Ab Minor";
           }
           if (camelotArray[l] === 21) {
-            camelotArray[l] = "8A / Am";
+            camelotArray[l] = "8A / A Minor";
           }
           if (camelotArray[l] === 22) {
-            camelotArray[l] = "3A / Bbm";
+            camelotArray[l] = "3A / Bb Minor";
           }
           if (camelotArray[l] === 23) {
-            camelotArray[l] = "10A / Bm";
+            camelotArray[l] = "10A / B Minor";
           }
           if (camelotArray[l] === 24) {
             camelotArray[l] = "None";
