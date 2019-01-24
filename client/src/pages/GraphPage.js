@@ -28,12 +28,14 @@ class GraphPage extends Component {
         const collection = res.data;
 
         let KeyArray = [];
+        let NumberKeyArray = [];
         let TempoArray = [];
         let GenreArray = [];
 
         collection.forEach(element => {
 
           KeyArray.push(element.Key);
+          NumberKeyArray.push(element.Key);
           TempoArray.push(element.Tempo);
           GenreArray.push(element.Genre);
           
@@ -46,13 +48,100 @@ class GraphPage extends Component {
         }
 
         //------------------------------------
+        // Replace null key with 24
         for (var l = 0; l < KeyArray.length; l++) {
           if (KeyArray[l] === null) {
             KeyArray[l] = 24;
           }
         }
-        const keys = KeyArray.filter(unique).sort(function(a, b){return a - b});
-        const letterKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "Cm", "Dbm", "Dm", "Ebm", "Em", "Fm", "Gbm", "Gm", "Abm", "Am", "Bbm", "Bm", "None"];
+        for (l = 0; l < NumberKeyArray.length; l++) {
+          if (NumberKeyArray[l] === null) {
+            NumberKeyArray[l] = 24;
+          }
+        }
+
+        let camelotArray = KeyArray;
+        for (l = 0; l < camelotArray.length; l++) {
+          if (camelotArray[l] === 0) {
+            camelotArray[l] = "8B / C";
+          }
+          if (camelotArray[l] === 1) {
+            camelotArray[l] = "3B / Db";
+          }
+          if (camelotArray[l] === 2) {
+            camelotArray[l] = "10B / D";
+          }
+          if (camelotArray[l] === 3) {
+            camelotArray[l] = "5B / Eb";
+          }
+          if (camelotArray[l] === 4) {
+            camelotArray[l] = "12B / E";
+          }
+          if (camelotArray[l] === 5) {
+            camelotArray[l] = "7B / F";
+          }
+          if (camelotArray[l] === 6) {
+            camelotArray[l] = "2B / Gb";
+          }
+          if (camelotArray[l] === 7) {
+            camelotArray[l] = "9B / G";
+          }
+          if (camelotArray[l] === 8) {
+            camelotArray[l] = "4B / Ab";
+          }
+          if (camelotArray[l] === 9) {
+            camelotArray[l] = "11B / A";
+          }
+          if (camelotArray[l] === 10) {
+            camelotArray[l] = "6B / Bb";
+          }
+          if (camelotArray[l] === 11) {
+            camelotArray[l] = "1B / B";
+          }
+          if (camelotArray[l] === 12) {
+            camelotArray[l] = "5A / Cm";
+          }
+          if (camelotArray[l] === 13) {
+            camelotArray[l] = "12A / Dbm";
+          }
+          if (camelotArray[l] === 14) {
+            camelotArray[l] = "7A / Dm";
+          }
+          if (camelotArray[l] === 15) {
+            camelotArray[l] = "2A / Ebm";
+          }
+          if (camelotArray[l] === 16) {
+            camelotArray[l] = "9A / Em";
+          }
+          if (camelotArray[l] === 17) {
+            camelotArray[l] = "4A / Fm";
+          }
+          if (camelotArray[l] === 18) {
+            camelotArray[l] = "11A / Gbm";
+          }
+          if (camelotArray[l] === 19) {
+            camelotArray[l] = "6A / Gm";
+          }
+          if (camelotArray[l] === 20) {
+            camelotArray[l] = "1A / Abm";
+          }
+          if (camelotArray[l] === 21) {
+            camelotArray[l] = "8A / Am";
+          }
+          if (camelotArray[l] === 22) {
+            camelotArray[l] = "3A / Bbm";
+          }
+          if (camelotArray[l] === 23) {
+            camelotArray[l] = "10A / Bm";
+          }
+          if (camelotArray[l] === 24) {
+            camelotArray[l] = "None";
+          }
+        }
+        const keys = camelotArray.filter(unique).sort();
+        const numberkeys = NumberKeyArray.filter(unique).sort(function (a, b) {return a - b});
+
+        // const letterKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "Cm", "Dbm", "Dm", "Ebm", "Em", "Fm", "Gbm", "Gm", "Abm", "Am", "Bbm", "Bm", "None"];
 
         //------------------------------------
 
@@ -71,24 +160,20 @@ class GraphPage extends Component {
         const tempos = TempoArray.filter(unique).sort(function (a, b) {return a - b});
 
         //------------------------------------
-        
+      
         let KeyTempoArray = [];
-        KeyArray.forEach(function (v, i) {
+        NumberKeyArray.forEach(function (v, i) {
           var obj = {};
           obj.Key = v;
           obj.Tempo = Tempo10Array[i];
           KeyTempoArray.push(obj);
         });
-
         const keystempos = KeyTempoArray.filter((e, i) => {
           return KeyTempoArray.findIndex((x) => {
           return x.Key === e.Key && x.Tempo === e.Tempo;
           }) === i;
         });
-        keystempos.sort(function (a, b) {
-          return a.Key - b.Key;
-        });
-
+        keystempos.sort((a, b) => (a.Key > b.Key) ? 1 : ((b.Key > a.Key) ? -1 : 0));
         //------------------------------------
 
         const genres = GenreArray.filter(unique).sort();
@@ -98,8 +183,8 @@ class GraphPage extends Component {
         let keysCount = [];
         for (i = 0; i < keys.length; i++) {
           var count = 0;
-          for (var j = 0; j < KeyArray.length; j++) {
-            if (keys[i] === KeyArray[j]) {
+          for (var j = 0; j < camelotArray.length; j++) {
+            if (keys[i] === camelotArray[j]) {
               count++;
             }
           }
@@ -144,6 +229,7 @@ class GraphPage extends Component {
           }
           keyTempoCount.push(count);
         }
+        console.log(keyTempoCount);
 
         let keytempoData = [];
         for (i = 0; i < keyTempoCount.length; i++) {
@@ -199,7 +285,7 @@ class GraphPage extends Component {
         this.setState({
 
           KeyBar: {
-            labels: letterKeys,
+            labels: keys,
             datasets: [{
               label: 'Key Bar Chart',
               data: keysCount,
@@ -217,7 +303,7 @@ class GraphPage extends Component {
           },
 
           KeyTempoBubble: {
-            labels: letterKeys,
+            labels: numberkeys,
             datasets: [{
               label: 'Key/Tempo Bubble Chart',
               data: keytempoData,
