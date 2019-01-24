@@ -18,7 +18,7 @@ class GraphPage extends Component {
       Data: {}
     }
   }
-
+  
   componentDidMount() {
     console.log("getting items");
     axios.get(`/api/tracks`)
@@ -46,8 +46,13 @@ class GraphPage extends Component {
         }
 
         //------------------------------------
-        
+        for (var l = 0; l < KeyArray.length; l++) {
+          if (KeyArray[l] === null) {
+            KeyArray[l] = 24;
+          }
+        }
         const keys = KeyArray.filter(unique).sort(function(a, b){return a - b});
+        const letterKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "Cm", "Dbm", "Dm", "Ebm", "Em", "Fm", "Gbm", "Gm", "Abm", "Am", "Bbm", "Bm", "None"];
 
         //------------------------------------
 
@@ -139,6 +144,7 @@ class GraphPage extends Component {
           }
           keyTempoCount.push(count);
         }
+
         let keytempoData = [];
         for (i = 0; i < keyTempoCount.length; i++) {
           keytempoData.push({
@@ -147,6 +153,8 @@ class GraphPage extends Component {
             r: keyTempoCount[i]
           });
         }
+
+        console.log(keytempoData)
 
         //------------------------------------
 
@@ -191,7 +199,7 @@ class GraphPage extends Component {
         this.setState({
 
           KeyBar: {
-            labels: keys,
+            labels: letterKeys,
             datasets: [{
               label: 'Key Bar Chart',
               data: keysCount,
@@ -209,7 +217,7 @@ class GraphPage extends Component {
           },
 
           KeyTempoBubble: {
-            labels: keys,
+            labels: letterKeys,
             datasets: [{
               label: 'Key/Tempo Bubble Chart',
               data: keytempoData,
