@@ -1,5 +1,5 @@
 # Record Stacks
-A web app which analyzes your DJ software's database file and provides analytics on your digital record collection. Currently under development and for Traktor only.
+A web app which analyzes your DJ software's database file and provides analytics on your digital record collection. Currently under development and for Traktor only. Feel free to clone and run on localhost, it just needs to be connected to a MongoDB database.
 
 The app utilizes a MERN stack, Passport and Charts.js for the visualization.
 
