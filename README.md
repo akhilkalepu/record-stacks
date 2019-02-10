@@ -1,6 +1,6 @@
 # Record Stacks
 
-[Imgur](https://i.imgur.com/5eB71Tr.gif)
+![Imgur](https://i.imgur.com/5eB71Tr.gif)
 
 A web app which analyzes your DJ software's database file and provides analytics on your digital record collection. Currently under development and for Traktor only. 
 
