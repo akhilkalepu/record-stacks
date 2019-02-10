@@ -1,4 +1,7 @@
 # Record Stacks
+
+[Imgur](https://i.imgur.com/RJgZ1QU.gifv)
+
 A web app which analyzes your DJ software's database file and provides analytics on your digital record collection. Currently under development and for Traktor only. 
 
 The app utilizes a MERN stack, Passport and Charts.js for the visualization. Feel free to clone and run on localhost, it just needs to be connected to a MongoDB database by creating a "config" folder with a keys.js file to export your mongoURI. Also, remember to run "npm install" in the root directory and the client folder as well.
