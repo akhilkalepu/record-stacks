@@ -6,6 +6,8 @@ A web app which analyzes your DJ software's database file and provides analytics
 
 The app utilizes a MERN stack, Passport and Charts.js for the visualization. Feel free to clone and run on localhost, it just needs to be connected to a MongoDB database by creating a "config" folder with a keys.js file to export your mongoURI. Also, remember to run "npm install" in the root directory and the client folder as well.
 
+*DATABSE FILE PARSING IS STILL BEING WORKED OUT. FILETYPE MUST BE CHANGED TO XML AND EVERYTHING BUT THE TRACK OBJECTS SHOULD BE DELETED.
+
 ![Imgur](https://i.imgur.com/9VXzc3m.png)
 
 The simply inputs the NML database file created by their Traktor software. The xml data is parsed locally, sent to MongoDB for storage as a JSON object for each track.
